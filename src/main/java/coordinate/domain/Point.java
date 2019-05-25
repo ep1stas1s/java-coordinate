@@ -3,36 +3,27 @@ package coordinate.domain;
 import java.util.Objects;
 
 public class Point implements Comparable<Point> {
-    private static final int MAX_COORDINATE_VALUE = 24;
-    private static final int MIN_COORDINATE_VALUE = 1;
     private static final int SQUARE = 2;
 
-    private final int x;
-    private final int y;
+    private final Coordinate x;
+    private final Coordinate y;
 
-    public Point(int x, int y) {
-        checkCoordinateValue(x);
-        checkCoordinateValue(y);
+    public Point(Coordinate x, Coordinate y) {
         this.x = x;
         this.y = y;
     }
 
-    private void checkCoordinateValue(double coordinateValue) {
-        if (coordinateValue < MIN_COORDINATE_VALUE || coordinateValue > MAX_COORDINATE_VALUE) {
-            throw new IllegalArgumentException("좌표가 범위를 벗어났습니다.");
-        }
-    }
-
     public double calculateDistance(Point point) {
-        return Math.sqrt(Math.pow(this.x - point.x, SQUARE) + Math.pow(this.y - point.y, SQUARE));
+        return Math.sqrt(Math.pow(this.x.getCoordinate() - point.x.getCoordinate(), SQUARE) +
+                Math.pow(this.y.getCoordinate() - point.y.getCoordinate(), SQUARE));
     }
 
     public int getX() {
-        return x;
+        return x.getCoordinate();
     }
 
     public int getY() {
-        return y;
+        return y.getCoordinate();
     }
 
     @Override
@@ -40,8 +31,8 @@ public class Point implements Comparable<Point> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Point point = (Point) o;
-        return Double.compare(point.x, x) == 0 &&
-                Double.compare(point.y, y) == 0;
+        return Objects.equals(x, point.x) &&
+                Objects.equals(y, point.y);
     }
 
     @Override
@@ -51,7 +42,8 @@ public class Point implements Comparable<Point> {
 
     @Override
     public int compareTo(Point p) {
-        if ((x < p.x) || (x == p.x && y < p.y)) {
+        if ((x.getCoordinate() < p.x.getCoordinate()) ||
+                (x.getCoordinate() == p.x.getCoordinate() && y.getCoordinate() < p.y.getCoordinate())) {
             return -1;
         }
         return 1;

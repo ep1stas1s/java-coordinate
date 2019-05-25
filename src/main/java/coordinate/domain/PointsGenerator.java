@@ -31,8 +31,8 @@ public class PointsGenerator {
     private static Point generatePoint(String point) {
         Matcher matcher = Pattern.compile(POINT_REGEX).matcher(point);
         if (matcher.find()) {
-            return new Point(Integer.parseInt(matcher.group(X_COORDINATE)),
-                    Integer.parseInt(matcher.group(Y_COORDINATE)));
+            return new Point(new Coordinate(Integer.parseInt(matcher.group(X_COORDINATE))),
+                    new Coordinate(Integer.parseInt(matcher.group(Y_COORDINATE))));
         }
         throw new IllegalArgumentException("잘못된 좌표입니다.");
     }
