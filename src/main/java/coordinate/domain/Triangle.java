@@ -10,7 +10,7 @@ public class Triangle extends Figure {
     private static final int ZERO_AREA = 0;
 
     public Triangle(Points points) {
-        super("삼각형의 넓이는 : ", points);
+        super(points);
         checkValidCoordinate();
     }
 
@@ -22,9 +22,9 @@ public class Triangle extends Figure {
 
     @Override
     public double calculateResult() {
-        double a = points.getPoint(FIRST_POINT).calculateDistance(points.getPoint(SECOND_POINT));
-        double b = points.getPoint(FIRST_POINT).calculateDistance(points.getPoint(THIRD_POINT));
-        double c = points.getPoint(SECOND_POINT).calculateDistance(points.getPoint(THIRD_POINT));
+        double a = points.calculateDistance(FIRST_POINT, SECOND_POINT);
+        double b = points.calculateDistance(FIRST_POINT, THIRD_POINT);
+        double c = points.calculateDistance(SECOND_POINT, THIRD_POINT);
         double s = (a + b + c) / 2;
         return Math.round((Math.sqrt(s * (s - a) * (s - b) * (s - c)) * ROUNDING_CRITERION)) / ROUNDING_CRITERION;
     }

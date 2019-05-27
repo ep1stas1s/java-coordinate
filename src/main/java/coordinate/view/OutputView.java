@@ -1,8 +1,6 @@
 package coordinate.view;
 
-import coordinate.domain.Calculable;
-import coordinate.domain.Figure;
-import coordinate.domain.Point;
+import coordinate.domain.*;
 
 import java.util.Arrays;
 
@@ -14,8 +12,18 @@ public class OutputView {
     private static final char Y_AXIS = '|';
 
     public static void printResult(Figure figure) {
-        Calculable calculator = figure;
-        System.out.println(figure.getResultMessage() + calculator.calculateResult());
+        if (figure instanceof Line) {
+            System.out.println("두 점 사이의 거리는 :" + figure.calculateResult());
+            return;
+        }
+        if (figure instanceof Triangle) {
+            System.out.println("삼각형의 넓이는 :" + figure.calculateResult());
+            return;
+        }
+        if (figure instanceof Rectangle) {
+            System.out.println("사각형의 넓이는 :" + figure.calculateResult());
+            return;
+        }
     }
 
     public static void printCoordinateSystem(Figure figure) {

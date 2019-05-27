@@ -9,12 +9,12 @@ public class Rectangle extends Figure {
     private static final int THIRD_POINT = 2;
 
     public Rectangle(Points points) {
-        super("사각형의 넓이는 : ", points);
-        checkValidCoordinate(points.getNonDuplicateXSize());
-        checkValidCoordinate(points.getNonDuplicateYSize());
+        super(points);
+        checkValidRectangle(points.getNonDuplicateXSize());
+        checkValidRectangle(points.getNonDuplicateYSize());
     }
 
-    private void checkValidCoordinate(int size) {
+    private void checkValidRectangle(int size) {
         if (size != NON_DUPLICATE_COORDINATE_SIZE) {
             throw new IllegalArgumentException("직사각형만 가능합니다.");
         }
@@ -22,8 +22,8 @@ public class Rectangle extends Figure {
 
     @Override
     public double calculateResult() {
-        double height = points.getPoint(FIRST_POINT).calculateDistance(points.getPoint(SECOND_POINT));
-        double width = points.getPoint(FIRST_POINT).calculateDistance(points.getPoint(THIRD_POINT));
+        double height = points.calculateDistance(FIRST_POINT, SECOND_POINT);
+        double width = points.calculateDistance(FIRST_POINT, THIRD_POINT);
         return height * width;
     }
 

@@ -4,6 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Points {
+    private static final int SQUARE = 2;
+
     private final List<Point> points;
 
     public Points(List<Point> points) {
@@ -33,8 +35,21 @@ public class Points {
                 .size();
     }
 
+    public double calculateDistance(int index1, int index2) {
+        return Math.sqrt(Math.pow(getXOfPoint(index1) - getXOfPoint(index2), SQUARE) +
+                Math.pow(getYOfPoint(index1) - getYOfPoint(index2), SQUARE));
+    }
+
     public Point getPoint(int index) {
         return points.get(index);
+    }
+
+    public int getXOfPoint(int index) {
+        return getPoint(index).getX();
+    }
+
+    public int getYOfPoint(int index) {
+        return getPoint(index).getX();
     }
 
     public int size() {
