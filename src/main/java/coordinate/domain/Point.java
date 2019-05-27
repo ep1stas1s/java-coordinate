@@ -3,19 +3,12 @@ package coordinate.domain;
 import java.util.Objects;
 
 public class Point implements Comparable<Point> {
-    private static final int SQUARE = 2;
-
     private final Coordinate x;
     private final Coordinate y;
 
-    public Point(Coordinate x, Coordinate y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public double calculateDistance(Point point) {
-        return Math.sqrt(Math.pow(this.x.getCoordinate() - point.x.getCoordinate(), SQUARE) +
-                Math.pow(this.y.getCoordinate() - point.y.getCoordinate(), SQUARE));
+    public Point(int x, int y) {
+        this.x = new Coordinate(x);
+        this.y = new Coordinate(y);
     }
 
     public int getX() {

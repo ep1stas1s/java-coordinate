@@ -11,27 +11,27 @@ public class PointsGeneratorTest {
     @Test
     void 점_2개_생성() {
         Points points = new Points(Arrays.asList(
-                new Point(new Coordinate(14), new Coordinate(15)),
-                new Point(new Coordinate(10), new Coordinate(10))));
+                new Point(14, 15),
+                new Point(10, 10)));
         assertThat(PointsGenerator.generate("(10,10)-(14,15)")).isEqualTo(points);
     }
 
     @Test
     void 점_3개_생성() {
         Points points = new Points(Arrays.asList(
-                new Point(new Coordinate(1), new Coordinate(5)),
-                new Point(new Coordinate(1), new Coordinate(1)),
-                new Point(new Coordinate(5), new Coordinate(1))));
+                new Point(1, 5),
+                new Point(1, 1),
+                new Point(5, 1)));
         assertThat(PointsGenerator.generate("(1,5)-(1,1)-(5,1)")).isEqualTo(points);
     }
 
     @Test
     void 점_4개_생성() {
         Points points = new Points(Arrays.asList(
-                new Point(new Coordinate(1), new Coordinate(5)),
-                new Point(new Coordinate(1), new Coordinate(1)),
-                new Point(new Coordinate(5), new Coordinate(1)),
-                new Point(new Coordinate(5), new Coordinate(5))));
+                new Point(1, 5),
+                new Point(1, 1),
+                new Point(5, 1),
+                new Point(5, 5)));
         assertThat(PointsGenerator.generate("(1,5)-(1,1)-(5,1)-(5,5)")).isEqualTo(points);
     }
 
