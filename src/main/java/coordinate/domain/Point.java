@@ -7,8 +7,8 @@ public class Point implements Comparable<Point> {
     private final Coordinate y;
 
     public Point(int x, int y) {
-        this.x = new Coordinate(x);
-        this.y = new Coordinate(y);
+        this.x = Coordinate.getCoordinate(x);
+        this.y = Coordinate.getCoordinate(y);
     }
 
     public int getX() {

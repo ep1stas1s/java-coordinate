@@ -49,7 +49,7 @@ public class Points {
     }
 
     public int getYOfPoint(int index) {
-        return getPoint(index).getX();
+        return getPoint(index).getY();
     }
 
     public int size() {

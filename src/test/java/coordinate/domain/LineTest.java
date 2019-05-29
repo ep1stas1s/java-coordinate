@@ -15,4 +15,12 @@ public class LineTest {
                 new Point(10, 10)));
         assertThat(new Line(points).calculateResult()).isEqualTo(6.403124, offset(0.00099));
     }
+
+    @Test
+    void 거리_계산2() {
+        Points points = new Points(Arrays.asList(
+                new Point(1, 1),
+                new Point(1, 11)));
+        assertThat(new Line(points).calculateResult()).isEqualTo(10, offset(0.00099));
+    }
 }
